@@ -12,15 +12,28 @@ const TableType1 = ({ items, folderName }) => {
   const updateItem = modifyCtx.updateItem;
   const itemCtx = modifyCtx.item;
 
-  const newItemCtx = { ...itemCtx };
-
+  let tableObject = { ...itemCtx["Spawning run timing and estimated number"] };
+  let updateInfo = {};
   const handleChange = (event) => {
     const speciesName = event.target.getAttribute("speciesname");
     const fieldName = event.target.name;
     const fieldValue = event.target.value;
-    console.log("speciesName", speciesName);
-    console.log("fieldName", fieldName);
-    console.log("fieldValue", fieldValue);
+    let updateTable = {};
+    let speciesContext = {};
+    updateInfo = {
+      [speciesName]: { [fieldName]: [fieldValue, 2] },
+    };
+    
+    if (tableObject[speciesName]) {
+      speciesContext = tableObject[speciesName];
+      updateTable = { ...speciesContext, ...updateInfo[speciesName] };
+    } else {
+      updateTable = { ...tableObject, ...updateInfo };
+    }
+    console.log("updateTable", updateTable);
+
+    // updateTable = { ...tableObject, ...updateInfo };
+
 
   };
   const renderTable = (item) => {
@@ -36,7 +49,7 @@ const TableType1 = ({ items, folderName }) => {
                   : styles.isRed
               }`}
             >
-              {species["Arrival month"]}
+              {/* {species["Arrival month"]} */}
 
               <EditableField
                 speciesName={item}

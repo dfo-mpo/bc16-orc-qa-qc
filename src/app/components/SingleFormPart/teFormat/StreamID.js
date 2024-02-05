@@ -114,8 +114,7 @@ function StreamID({ items, folderName }) {
                 fieldName="Second local name"
                 fieldValue={secondLocalName[0]}
                 isRed={secondLocalName[1]}
-                handle
-                Change={handleChange}
+                handleChange={handleChange}
               />
             </td>
             {/* <td className={secondLocalName[1] ? "" : styles.isRed}>
