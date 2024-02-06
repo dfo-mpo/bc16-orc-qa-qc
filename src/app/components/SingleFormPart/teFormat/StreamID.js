@@ -121,7 +121,7 @@ function StreamID({ items, folderName }) {
               {secondLocalName}
             </td> */}
           </tr>
-          <tr>
+          <tr> 
             <td>Flows Into:</td>
             <td>
               <EditableField
